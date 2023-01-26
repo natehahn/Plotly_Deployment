@@ -90,8 +90,8 @@ function buildCharts(sample) {
     // so the otu_ids with the most bacteria are last. 
 //    var yticks = 
     var topTenOTU = otuID.slice(0,10).reverse(); //map(sampleVal => otuID)
-    var sorted = topTenOTU.sort((a,b) => b-a);
-    console.log(sorted);
+    //var sorted = topTenOTU.sort((a,b) => b-a);
+    console.log(topTenOTU);
     
         //let otuBar = "";
     //for (let i = 0; i < sorted.length; i++) {
@@ -109,7 +109,7 @@ function buildCharts(sample) {
       orientation: "h",
       text: otuLabel,
       x: barValue,
-      y: sorted.map(barValue => ("OTU " + barValue))
+      y: topTenOTU.map(barValue => ("OTU " + barValue))
     };
 
     var barData = [trace1];
@@ -131,8 +131,9 @@ function buildCharts(sample) {
       mode: 'markers',
       marker: {
         color: otuID,
-        sizemode: 'area',
-        sizeref: 2.0 * Math.max(sampleVal) / (50**2)
+        //sizemode: 'area',
+        size: sampleVal,
+        //sizeref: 2.0 * Math.max(sampleVal) / (50**2)
       }
     };
     
